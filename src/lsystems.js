@@ -5,9 +5,9 @@ LSystem = class LSystem {
   constructor(alphabet, axiom, rules) {
     this.alphabet = alphabet;
     this.axiom = axiom;
-    this.startString = axiom;
-    this.endString = '';
     this.rules = rules;
+    this.startString = this.axiom;
+    this.endString = '';
     this.nIters = 0;
   }
 
