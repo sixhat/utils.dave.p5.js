@@ -10,6 +10,11 @@ class Turtle {
 		this.stack = [];
 	}
 
+	// ToDo - This function will draw an L-System based on default values.
+	drawLSystem(ls){
+		
+	}
+
 	// Pushes the current state of turtle to stack.
 	push() {
 		this.stack.push({

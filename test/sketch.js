@@ -6,4 +6,9 @@ function setup(){
   print(p);
   p.iterate(1);
   print (p);
+
+
+  t = new Turtle();
+  t.pos(width/2, height/2);
+  t.drawLSystem(p);
 }
