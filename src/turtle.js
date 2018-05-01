@@ -107,6 +107,10 @@ class Turtle {
     this.y = y;
   }
   // Alias to forward
+  fd(s){
+    this.forward(s);
+  }
+  // Alias to forward
   fw(s) {
     this.forward(s);
   }
@@ -127,15 +131,21 @@ class Turtle {
   bk(s) {
     this.backward(s);
   }
+  // Alias to backward
+  back(s){
+    this.backward(s);
+  }
+  // Moves the turtle backwards without painting.
   backward(steps) {
     const ps = this.penDown;
     this.penDown = false;
     this.forward(-steps);
     this.penDown = ps;
   }
+  // Alias to style
   st(s) {
     this.style(s);
-  } // Alias
+  }
   style(weight) {
     this.penWeight = weight;
   }
