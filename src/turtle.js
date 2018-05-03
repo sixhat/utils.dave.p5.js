@@ -19,7 +19,12 @@ class Turtle {
   // + turn right
   // - turn left
   drawLSystem(ls, step, angle) {
-    for (let letter of ls.endString) {
+    this.drawString(ls.endString,step,angle);
+  }
+
+  // Draw a string (used by drawLSystem, but can be generic)
+  drawString(string, step, angle) {
+    for (let letter of string) {
       switch (letter) {
       case 'F':
         this.pd();
@@ -45,6 +50,7 @@ class Turtle {
       }
     }
   }
+
   // Pushes the current state of turtle to stack.
   push() {
     this.stack.push({
