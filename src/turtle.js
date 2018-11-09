@@ -1,12 +1,12 @@
 // The Turtle class implements the basic methods of Turtle graphics from the logo languages.
 class Turtle {
-  constructor(x, y) {
+  constructor(x, y, heading) {
     this.x = x | 0;
     this.y = y | 0;
     this.penDown = true;
     this.penColor = 0;
     this.penWeight = 1;
-    this.heading = -HALF_PI;
+    this.heading = heading | -HALF_PI;
     this.stack = [];
   }
   // This function draws an L-System based on default values.
@@ -19,34 +19,34 @@ class Turtle {
   // + turn right
   // - turn left
   drawLSystem(ls, step, angle) {
-    this.drawString(ls.endString,step,angle);
+    this.drawString(ls.endString, step, angle);
   }
 
   // Draw a string (used by drawLSystem, but can be generic)
   drawString(string, step, angle) {
     for (let letter of string) {
       switch (letter) {
-      case 'F':
-        this.pd();
-        this.fw(step);
-        break;
-      case 'f':
-        this.pu();
-        this.fw(step);
-        break;
-      case '[':
-        this.push();
-        break;
-      case ']':
-        this.pop();
-        break;
-      case '+':
-        this.rt(angle);
-        break;
-      case '-':
-        this.lt(angle);
-        break;
-      default:
+        case "F":
+          this.pd();
+          this.fw(step);
+          break;
+        case "f":
+          this.pu();
+          this.fw(step);
+          break;
+        case "[":
+          this.push();
+          break;
+        case "]":
+          this.pop();
+          break;
+        case "+":
+          this.rt(angle);
+          break;
+        case "-":
+          this.lt(angle);
+          break;
+        default:
       }
     }
   }
@@ -54,12 +54,12 @@ class Turtle {
   // Pushes the current state of turtle to stack.
   push() {
     this.stack.push({
-      'x': this.x,
-      'y': this.y,
-      'penDown': this.penDown,
-      'penColor': this.penColor,
-      'penWeight': this.penWeight,
-      'heading': this.heading
+      x: this.x,
+      y: this.y,
+      penDown: this.penDown,
+      penColor: this.penColor,
+      penWeight: this.penWeight,
+      heading: this.heading
     });
   }
   // Reverts to previous saved state of the turtle removing it from the stack.
@@ -113,7 +113,7 @@ class Turtle {
     this.y = y;
   }
   // Alias to forward
-  fd(s){
+  fd(s) {
     this.forward(s);
   }
   // Alias to forward
@@ -138,7 +138,7 @@ class Turtle {
     this.backward(s);
   }
   // Alias to backward
-  back(s){
+  back(s) {
     this.backward(s);
   }
   // Moves the turtle backwards without painting.
@@ -157,6 +157,6 @@ class Turtle {
   }
   // Set heading of turtle East=0, CW
   hd(h) {
-    this.heading = radians(h)
-  };
+    this.heading = radians(h);
+  }
 }
