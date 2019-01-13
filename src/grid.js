@@ -10,18 +10,11 @@ class Grid {
     push();
     stroke(this.color);
     noFill();
-
-    for (let y of this.horizontal) {
-      line(0, y, width, y);
-    }
-    for (let x of this.vertical) {
-      line(x, 0, x, height);
-    }
-
     rectMode(CORNERS);
-    for (let r of this.rectangles) {
-      rect(r[0], r[1], r[2], r[3]);
-    }
+    
+    this.horizontal.forEach(y => line(0, y, width, y));
+    this.vertical.forEach(x => line(x, 0, x, height));
+    this.rectangles.forEach( r => rect(r[0], r[1], r[2], r[3]));
     pop();
   }
   clear() {
