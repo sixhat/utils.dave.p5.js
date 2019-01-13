@@ -8,6 +8,16 @@ class Turtle {
     this.penWeight = 1;
     this.heading = heading | -HALF_PI;
     this.stack = [];
+    this.cl = this.color;
+    this.pu = this.up;
+    this.pd = this.down;
+    this.rt = this.right;
+    this.lt = this.left;
+    this.fd = this.forward;
+    this.fw = this.forward;
+    this.bk = this.backward;
+    this.back = this.backward;
+    this.st = this.style;
   }
   // This function draws an L-System based on default values.
   // The turtle knows how to draw certain types of LSystems
@@ -72,37 +82,18 @@ class Turtle {
     this.penWeight = el.penWeight;
     this.heading = el.heading;
   }
-  // Alias to color
-  cl(c) {
-    this.color(c);
-  }
+
   color(c) {
     this.penColor = c;
-  }
-  // Alias to up
-  pu() {
-    this.up();
   }
   up() {
     this.penDown = false;
   }
-  // Alias to down
-  pd() {
-    this.down();
-  }
   down() {
     this.penDown = true;
   }
-  // Alias to right
-  rt(r) {
-    this.right(r);
-  }
   right(rot) {
     this.heading += radians(rot);
-  }
-  // Alias to left
-  lt(l) {
-    this.left(l);
   }
   left(rot) {
     this.heading -= radians(rot);
@@ -111,14 +102,6 @@ class Turtle {
   pos(x, y) {
     this.x = x;
     this.y = y;
-  }
-  // Alias to forward
-  fd(s) {
-    this.forward(s);
-  }
-  // Alias to forward
-  fw(s) {
-    this.forward(s);
   }
   forward(steps) {
     const tx = this.x + steps * cos(this.heading);
@@ -133,24 +116,12 @@ class Turtle {
     this.x = tx;
     this.y = ty;
   }
-  // Alias to backward
-  bk(s) {
-    this.backward(s);
-  }
-  // Alias to backward
-  back(s) {
-    this.backward(s);
-  }
   // Moves the turtle backwards without painting.
   backward(steps) {
     const ps = this.penDown;
     this.penDown = false;
     this.forward(-steps);
     this.penDown = ps;
-  }
-  // Alias to style
-  st(s) {
-    this.style(s);
   }
   style(weight) {
     this.penWeight = weight;
