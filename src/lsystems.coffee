@@ -1,5 +1,5 @@
 class LSystem
-  constructor: (@alphabet,@axiom,@rules) ->
+  constructor: (@alphabet, @axiom, @rules) ->
     this.startString = @axiom
     this.endString = ''
     this.nIters = 0
@@ -19,7 +19,7 @@ class LSystem
     return @endString
 
   addRule: (key, action) ->
-    @rules[key]=action
+    @rules[key] = action
 
   removeRule: (key) ->
     delete @rules[key]

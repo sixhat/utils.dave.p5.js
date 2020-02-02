@@ -34,7 +34,7 @@ class Turtle {
 
   // Draw a string (used by drawLSystem, but can be generic)
   drawString(string, step, angle) {
-    for (let letter of string) {
+    for (const letter of string) {
       switch (letter) {
         case "F":
           this.pd();
