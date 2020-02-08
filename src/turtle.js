@@ -6,7 +6,7 @@ class Turtle {
     this.penDown = true;
     this.penColor = 0;
     this.penWeight = 1;
-    this.heading = heading | -HALF_PI;
+    this.heading = heading || -HALF_PI;
     this.stack = [];
     this.cl = this.color;
     this.pu = this.up;
@@ -81,6 +81,18 @@ class Turtle {
     this.penColor = el.penColor;
     this.penWeight = el.penWeight;
     this.heading = el.heading;
+  }
+
+  show(){
+    this.push();
+    stroke('pink');
+    this.penDown();
+    this.rt(10);
+    this.fd(-30);
+    this.fd(30);
+    this.lt(20);
+    this.fd(-30);
+    this.pot();
   }
 
   color(c) {
