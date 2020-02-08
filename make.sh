@@ -14,6 +14,8 @@ coffee -cb src/*.coffee
 
 echo // utils.dave.p5.js v.$version > $out
 cat src/*.js >> $out
+
+echo Minifying 
 minify lib/utils.dave.p5.js > lib/utlis.dave.p5.min.js
 
 echo $version > version.txt
