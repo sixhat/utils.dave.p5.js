@@ -4,8 +4,9 @@ mkdir -p ./lib
 
 out="./lib/utils.dave.p5.js"
 version=`cat version.txt`
+version=$(($version + 1 ))
 
-echo Making version $(($version + 1 ))
+echo Making version $version
 rm $out
 
 echo CoffeeScript Conversion
@@ -15,6 +16,6 @@ echo // utils.dave.p5.js v.$(($version + 1 )) > $out
 cat src/*.js >> $out
 echo $(( $version + 1 )) > version.txt
 
-git commit -a -m 'make $(( $version + 1 ))'
-git tag -a v$(( $version + 1 )) -m '$(( $version + 1 ))'
+git commit -a -m "'make version $version'"
+git tag -a v$version -m "'Version $version'"
 git push
