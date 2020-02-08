@@ -16,6 +16,6 @@ echo // utils.dave.p5.js v.$(($version + 1 )) > $out
 cat src/*.js >> $out
 echo $(( $version + 1 )) > version.txt
 
-git commit -a -m "'make version $version'"
-git tag -a v$version -m "'Version $version'"
+git commit -a -m "make version $version"
+git tag -a v$version -m "Version $version"
 git push
