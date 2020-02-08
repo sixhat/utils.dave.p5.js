@@ -86,13 +86,13 @@ class Turtle {
   show(){
     this.push();
     stroke('pink');
-    this.penDown();
+    this.down();
     this.rt(10);
-    this.fd(-30);
-    this.fd(30);
+    this.fd(-10);
+    this.fd(10);
     this.lt(20);
-    this.fd(-30);
-    this.pot();
+    this.fd(-10);
+    this.pop();
   }
 
   color(c) {
