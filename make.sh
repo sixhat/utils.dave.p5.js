@@ -12,7 +12,7 @@ rm $out
 echo CoffeeScript Conversion
 coffee -cb src/*.coffee
 
-echo // utils.dave.p5.js v.$(($version + 1 )) > $out
+echo // utils.dave.p5.js v.$version > $out
 cat src/*.js >> $out
 echo $version > version.txt
 
