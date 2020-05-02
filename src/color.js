@@ -37,3 +37,29 @@ class Dave {
     // loadPixels should be called only during the first time for this particular image.
   }
 }
+
+// Simples construtor de paletas de cores.
+const paleta = {
+  cor: [],
+  tom: function(n, sat = 100, luz = 100) {
+    colorMode(HSB, 360, 100, 100, 100);
+    const step = 360 / (n - 1);
+    while (n-- > 0) {
+      this.cor[this.cor.length] = color(360 - n * step, sat, luz);
+    }
+  },
+  luz: function(n = 10, tom = random(360), sat = 100) {
+    colorMode(HSB, 360, 100, 100, 100);
+    const step = 100 / (n - 1);
+    while (n-- > 0) {
+      this.cor[this.cor.length] = color(tom, sat, 100 - n * step);
+    }
+  },
+  sat: function(n = 10, tom = random(360), luz = 100) {
+    colorMode(HSB, 360, 100, 100, 100);
+    const step = 100 / (n - 1);
+    while (n-- > 0) {
+      this.cor[this.cor.length] = color(tom, 100 - n * step, luz);
+    }
+  }
+}
