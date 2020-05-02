@@ -20,6 +20,6 @@ minify lib/utils.dave.p5.js > lib/utils.dave.p5.min.js
 
 echo $version > version.txt
 
-# git commit -a -m "make version $version"
-# git tag -a v$version -m "Version $version"
-# git push
+git commit -a -m "make version $version"
+git tag -a v$version -m "Version $version"
+git push
