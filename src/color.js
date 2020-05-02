@@ -1,7 +1,7 @@
 class Dave {
   // Short version of functions bellow.
   constructor() {
-    this.grid = new Grid();
+    this.grid = new Guides();
     this.g = this.grid;
     this.f = this.fillHsluv;
     this.s = this.strokeHsluv;
