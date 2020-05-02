@@ -15,6 +15,7 @@ class Turtle {
     this.lt = this.left;
     this.fd = this.forward;
     this.fw = this.forward;
+    this.fwd = this.forward;
     this.bk = this.backward;
     this.back = this.backward;
     this.st = this.style;
