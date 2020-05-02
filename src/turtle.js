@@ -35,18 +35,18 @@ class Turtle {
 
   // Draw a string (used by drawLSystem, but can be generic)
   drawString(string, step, angle) {
-    const task = {
-      "F": function(){this.pd; this.fw(step)},
-      "f": function(){this.pu; this.fw(step)},
-      "[": function(){this.push()},
-      "]": function(){this.pop()},
-      "+": function(){this.right(angle)},
-      "-": function(){this.left(angle)}
+    const draw = {
+      "f": e => { e.pu; e.forward(step) },
+      "F": e => { e.pd; e.forward(step) },
+      "[": e => e.push(),
+      "]": e => e.pop(),
+      "+": e => e.right(angle),
+      "-": e => e.left(angle)
     };
-
-    for (const letter of string) {
-      task[letter]();
-    }
+    const commands = Object.keys(draw);
+    [...string].forEach(letter => {
+      if (commands.includes(letter)) draw[letter](this);
+    });
   }
 
   // Pushes the current state of turtle to stack.
@@ -71,7 +71,7 @@ class Turtle {
     this.heading = el.heading;
   }
 
-  show(){
+  show() {
     this.push();
     stroke('pink');
     this.down();
