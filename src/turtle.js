@@ -35,30 +35,17 @@ class Turtle {
 
   // Draw a string (used by drawLSystem, but can be generic)
   drawString(string, step, angle) {
+    const task = {
+      "F": function(){this.pd; this.fw(step)},
+      "f": function(){this.pu; this.fw(step)},
+      "[": function(){this.push()},
+      "]": function(){this.pop()},
+      "+": function(){this.right(angle)},
+      "-": function(){this.left(angle)}
+    };
+
     for (const letter of string) {
-      switch (letter) {
-        case "F":
-          this.pd();
-          this.fw(step);
-          break;
-        case "f":
-          this.pu();
-          this.fw(step);
-          break;
-        case "[":
-          this.push();
-          break;
-        case "]":
-          this.pop();
-          break;
-        case "+":
-          this.rt(angle);
-          break;
-        case "-":
-          this.lt(angle);
-          break;
-        default:
-      }
+      task[letter]();
     }
   }
 
