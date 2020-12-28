@@ -1,6 +1,5 @@
-/**
- * Oscillator
- * @param  {number} p=1 - Period of the Oscillator
+/** Sine Wave Oscillator
+ * @param  {number} p=1s - Period of the Oscillator
  * @param  {number} a=1 - Lower value of the oscillator
  * @param  {number} b=2 - Higher value of the oscillator
  * @param  {number} phase=0 - Initial oscillator angle
@@ -14,6 +13,7 @@ class Oscillator {
     this.phase = phase;
     this.activate();
   }
+
   /**
    * Activates the Oscillator(Resets Time to zero)
    */
@@ -27,20 +27,20 @@ class Oscillator {
     this.pt = this.x;
     this.py = this.y;
   }
-  /**
-   * Pauses the Oscillator
+
+  /** Pauses the Oscillator
    */
   pause() {
     this.active = false;
   }
-  /**
-  * unPauses the oscillator
+
+  /** unPauses the oscillator
    */
   unPause() {
     this.active = true;
   }
-  /**
-   * Computes the value of the oscillator
+
+  /** Computes the value of the oscillator
    * @returns {number} The value of the oscillator at current time.
    */
   go() {

@@ -6,9 +6,10 @@ Right now it includes tools to work with:
 
 - Grids
 - Perceptually uniform colors
-- LSystems
-- Turtle Graphics
-- Oscillators
+- {@link LSystem}
+- {@link Turtle} Graphics
+- Ui {@link Menu}
+- {@link Oscillator}
 
 ## How to use
 
