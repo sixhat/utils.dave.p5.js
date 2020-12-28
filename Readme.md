@@ -2,14 +2,14 @@
 
 This is a collection of utils I use with P5.js to make some of my sketches easier to work with.
 
-Right now it includes tools to work with:
+It includes tools to work with:
 
 - Grids
 - Perceptually uniform colors
-- {@link LSystem}
-- {@link Turtle} Graphics
-- Ui {@link Menu}
-- {@link Oscillator}
+- [LSystems](https://sixhat.github.io/utils.dave.p5.js/doc/LSystem.html)
+- [Turtle Graphics](https://sixhat.github.io/utils.dave.p5.js/doc/Turtle.html)
+- [Ui Menus](https://sixhat.github.io/utils.dave.p5.js/)
+- [Oscillators](https://sixhat.github.io/utils.dave.p5.js/doc/Oscillator.html)
 
 ## How to use
 
@@ -23,6 +23,10 @@ In your index.html add library JS to your header, AFTER the p5.js library
 ```
 
 This makes the classes in utils available to use in your sketch.js
+
+## Documentation
+
+The code has inline code, but you can also check the [documentation online](https://sixhat.github.io/utils.dave.p5.js/doc/).
 
 ### Note
 
