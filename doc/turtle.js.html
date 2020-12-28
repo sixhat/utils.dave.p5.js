@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>turtle.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="LSystem.html">LSystem</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#addRule">addRule</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#iterate">iterate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#processString">processString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#removeRule">removeRule</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Oscillator.html">Oscillator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#activate">activate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#go">go</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#pause">pause</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#unPause">unPause</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Turtle.html">Turtle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#backward">backward</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#drawLSystem">drawLSystem</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#drawString">drawString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#forward">forward</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#hd">hd</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#pop">pop</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#pos">pos</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#push">push</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#show">show</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">turtle.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>class Turtle {
+  /** 
+   * A Turtle that can be controlled in the style of the LOGO Language
+   * @param  {number} x - Initial X Position of Turtle
+   * @param  {number} y - Initial Y Position of Turtle 
+   * @param  {number} heading - Initial Heading of Turtle
+   */
+  constructor(x = 0, y = 0, heading = -HALF_PI) {
+    this.x = x ;
+    this.y = y ;
+    this.penDown = true;
+    this.penColor = 0;
+    this.penWeight = 1;
+    this.heading = heading;
+    this.stack = [];
+    this.cl = this.color;
+    this.pu = this.up;
+    this.pd = this.down;
+    this.rt = this.right;
+    this.lt = this.left;
+    this.fd = this.forward;
+    this.fw = this.forward;
+    this.fwd = this.forward;
+    this.bk = this.backward;
+    this.back = this.backward;
+    this.st = this.style;
+  }
+
+  /**
+  * Draws an L-System based on default values.
+  * The turtle knows how to draw certain types of LSystems
+  * 
+  * &lt;br>F means forward with pen down
+  * &lt;br>f means fordward with pen up
+  * &lt;br>X or any other letter pass.
+  * &lt;br>[ push
+  * &lt;br>] pop
+  * &lt;br>+ turn right
+  * &lt;br>- turn left
+  * 
+  * @param {LSystem} ls - the LSystem to draw
+  * @param {number} step - the size of the step
+  * @param {number} angle - the angle of turns 
+   */
+  drawLSystem(ls, step, angle) {
+    this.drawString(ls.endString, step, angle);
+  }
+
+  /** Draw a string (used by drawLSystem)
+   * @param  {string} string
+   * @param  {number} step
+   * @param  {number} angle
+   */
+  drawString(string, step, angle) {
+    const draw = {
+      "f": e => { e.pu; e.forward(step) },
+      "F": e => { e.pd; e.forward(step) },
+      "[": e => e.push(),
+      "]": e => e.pop(),
+      "+": e => e.right(angle),
+      "-": e => e.left(angle)
+    };
+    const commands = Object.keys(draw);
+    [...string].forEach(letter => {
+      if (commands.includes(letter)) draw[letter](this);
+    });
+  }
+
+  
+  /** Pushes the current state of turtle to stack.
+   */
+  push() {
+    this.stack.push({
+      x: this.x,
+      y: this.y,
+      penDown: this.penDown,
+      penColor: this.penColor,
+      penWeight: this.penWeight,
+      heading: this.heading
+    });
+  }
+  /** Reverts to previous saved state of the turtle removing it from the stack.
+   */
+  pop() {
+    const el = this.stack.pop();
+    this.x = el.x;
+    this.y = el.y;
+    this.penDown = el.penDown;
+    this.penColor = el.penColor;
+    this.penWeight = el.penWeight;
+    this.heading = el.heading;
+  }
+
+  
+  /** Shows the Turtle
+   */
+  show() {
+    this.push();
+    stroke('pink');
+    this.down();
+    this.rt(10);
+    this.fd(-10);
+    this.fd(10);
+    this.lt(20);
+    this.fd(-10);
+    this.pop();
+  }
+
+  color(c) {
+    this.penColor = c;
+  }
+  up() {
+    this.penDown = false;
+  }
+  down() {
+    this.penDown = true;
+  }
+  right(rot) {
+    this.heading += radians(rot);
+  }
+  left(rot) {
+    this.heading -= radians(rot);
+  }
+  
+  /** Set turtle position in coordinate system
+   * @param  {number} x - the X position
+   * @param  {number} y - the Y position
+   */
+  pos(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  /** Move the turtle forward 
+   * @param  {number} steps - the number of steps to move forward
+   */
+  forward(steps) {
+    const tx = this.x + steps * cos(this.heading);
+    const ty = this.y + steps * sin(this.heading);
+    if (this.penDown) {
+      push();
+      stroke(this.penColor);
+      strokeWeight(this.penWeight);
+      line(this.x, this.y, tx, ty);
+      pop();
+    }
+    this.x = tx;
+    this.y = ty;
+  }
+
+  /** Move the turtle backwards without painting
+   * @param  {number} steps - the number of steps to move
+   */
+  backward(steps) {
+    const ps = this.penDown;
+    this.penDown = false;
+    this.forward(-steps);
+    this.penDown = ps;
+  }
+  style(weight) {
+    this.penWeight = weight;
+  }
+
+  /** Set heading of turtle East=0, CW
+   * @param {number} heading - the heading of the turtle
+    */
+  hd(heading) {
+    this.heading = radians(heading);
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Mon Dec 28 2020 12:32:37 GMT+0000 (Western European Standard Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

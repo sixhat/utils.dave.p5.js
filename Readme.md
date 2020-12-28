@@ -8,3 +8,23 @@ Right now it includes tools to work with:
 - Perceptually uniform colors
 - LSystems
 - Turtle Graphics
+- Oscillators
+
+## How to use
+
+Download the latest file `utils.dave.p5.js` or `utils.dave.p5.min.js` from [the repository](https://github.com/sixhat/utils.dave.p5.js/tree/master/lib)
+
+In your index.html add library JS to your header, AFTER the p5.js library
+
+```html
+<script src='p5.min.js'></script>
+<script src='utils.dave.p5.min.js'></script>
+```
+
+This makes the classes in utils available to use in your sketch.js
+
+### Note
+
+This is a work in progress and still far from concluded (or fully documented).
+
+In any case if you find it useful and want to contribute please create a pull-request and I'll gladly add new features/corrections to it.

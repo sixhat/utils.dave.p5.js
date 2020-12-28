@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>oscillator.js - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <li class="nav-link nav-home-link"><a href="index.html">Home</a></li><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="LSystem.html">LSystem</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#addRule">addRule</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#iterate">iterate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#processString">processString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="LSystem.html#removeRule">removeRule</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Oscillator.html">Oscillator</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#activate">activate</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#go">go</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#pause">pause</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Oscillator.html#unPause">unPause</a></span></li><li class="nav-heading"><span class="nav-item-type type-class">C</span><span class="nav-item-name"><a href="Turtle.html">Turtle</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#backward">backward</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#drawLSystem">drawLSystem</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#drawString">drawString</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#forward">forward</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#hd">hd</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#pop">pop</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#pos">pos</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#push">push</a></span></li><li class="nav-item"><span class="nav-item-type type-function">F</span><span class="nav-item-name"><a href="Turtle.html#show">show</a></span></li>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">oscillator.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * Oscillator
+ * @param  {number} p=1 - Period of the Oscillator
+ * @param  {number} a=1 - Lower value of the oscillator
+ * @param  {number} b=2 - Higher value of the oscillator
+ * @param  {number} phase=0 - Initial oscillator angle
+ */
+class Oscillator {
+  constructor(p = 1, a = 1, b = 2, phase = 0) {
+    this.period = p;
+    this.amplitude = Math.abs(b - a) / 2;
+    this.frequency = 1 / this.period;
+    this.center = (a + b) / 2;
+    this.phase = phase;
+    this.activate();
+  }
+  /**
+   * Activates the Oscillator(Resets Time to zero)
+   */
+  activate() {
+    this.active = true;
+    this.start_time = Date.now() / 1000;
+    this.t = Date.now() - this.start_time;
+    this.y = this.center + this.amplitude * Math.sin(2 * Math.PI * this.t * this.frequency + this.phase);
+    this.x = this.t;
+    this.px = this.x;
+    this.pt = this.x;
+    this.py = this.y;
+  }
+  /**
+   * Pauses the Oscillator
+   */
+  pause() {
+    this.active = false;
+  }
+  /**
+  * unPauses the oscillator
+   */
+  unPause() {
+    this.active = true;
+  }
+  /**
+   * Computes the value of the oscillator
+   * @returns {number} The value of the oscillator at current time.
+   */
+  go() {
+    if (this.active) {
+      this.pt = this.t;
+      this.px = this.pt;
+      this.py = this.y;
+      this.t = Date.now() / 1000 - this.start_time;
+      this.y = this.center + this.amplitude * Math.sin(2 * Math.PI * this.t * this.frequency + this.phase);
+      this.x = this.t;
+    }
+    return this.y;
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Mon Dec 28 2020 12:32:37 GMT+0000 (Western European Standard Time) using the Minami theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

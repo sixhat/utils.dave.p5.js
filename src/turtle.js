@@ -1,12 +1,17 @@
-// The Turtle class implements the basic methods of Turtle graphics from the logo languages.
 class Turtle {
-  constructor(x, y, heading) {
-    this.x = x | 0;
-    this.y = y | 0;
+  /** 
+   * A Turtle that can be controlled in the style of the LOGO Language
+   * @param  {number} x - Initial X Position of Turtle
+   * @param  {number} y - Initial Y Position of Turtle 
+   * @param  {number} heading - Initial Heading of Turtle
+   */
+  constructor(x = 0, y = 0, heading = -HALF_PI) {
+    this.x = x ;
+    this.y = y ;
     this.penDown = true;
     this.penColor = 0;
     this.penWeight = 1;
-    this.heading = heading || -HALF_PI;
+    this.heading = heading;
     this.stack = [];
     this.cl = this.color;
     this.pu = this.up;
@@ -20,20 +25,32 @@ class Turtle {
     this.back = this.backward;
     this.st = this.style;
   }
-  // This function draws an L-System based on default values.
-  // The turtle knows how to draw certain types of LSystems
-  // F means forward with pen down
-  // f means fordward with pen up
-  // X or any other letter pass.
-  // [ push
-  // ] pop
-  // + turn right
-  // - turn left
+
+  /**
+  * Draws an L-System based on default values.
+  * The turtle knows how to draw certain types of LSystems
+  * 
+  * <br>F means forward with pen down
+  * <br>f means fordward with pen up
+  * <br>X or any other letter pass.
+  * <br>[ push
+  * <br>] pop
+  * <br>+ turn right
+  * <br>- turn left
+  * 
+  * @param {LSystem} ls - the LSystem to draw
+  * @param {number} step - the size of the step
+  * @param {number} angle - the angle of turns 
+   */
   drawLSystem(ls, step, angle) {
     this.drawString(ls.endString, step, angle);
   }
 
-  // Draw a string (used by drawLSystem, but can be generic)
+  /** Draw a string (used by drawLSystem)
+   * @param  {string} string
+   * @param  {number} step
+   * @param  {number} angle
+   */
   drawString(string, step, angle) {
     const draw = {
       "f": e => { e.pu; e.forward(step) },
@@ -49,7 +66,9 @@ class Turtle {
     });
   }
 
-  // Pushes the current state of turtle to stack.
+  
+  /** Pushes the current state of turtle to stack.
+   */
   push() {
     this.stack.push({
       x: this.x,
@@ -60,7 +79,8 @@ class Turtle {
       heading: this.heading
     });
   }
-  // Reverts to previous saved state of the turtle removing it from the stack.
+  /** Reverts to previous saved state of the turtle removing it from the stack.
+   */
   pop() {
     const el = this.stack.pop();
     this.x = el.x;
@@ -71,6 +91,9 @@ class Turtle {
     this.heading = el.heading;
   }
 
+  
+  /** Shows the Turtle
+   */
   show() {
     this.push();
     stroke('pink');
@@ -98,11 +121,19 @@ class Turtle {
   left(rot) {
     this.heading -= radians(rot);
   }
-  // Set turtle position in coordinate system
+  
+  /** Set turtle position in coordinate system
+   * @param  {number} x - the X position
+   * @param  {number} y - the Y position
+   */
   pos(x, y) {
     this.x = x;
     this.y = y;
   }
+
+  /** Move the turtle forward 
+   * @param  {number} steps - the number of steps to move forward
+   */
   forward(steps) {
     const tx = this.x + steps * cos(this.heading);
     const ty = this.y + steps * sin(this.heading);
@@ -116,7 +147,10 @@ class Turtle {
     this.x = tx;
     this.y = ty;
   }
-  // Moves the turtle backwards without painting.
+
+  /** Move the turtle backwards without painting
+   * @param  {number} steps - the number of steps to move
+   */
   backward(steps) {
     const ps = this.penDown;
     this.penDown = false;
@@ -126,8 +160,11 @@ class Turtle {
   style(weight) {
     this.penWeight = weight;
   }
-  // Set heading of turtle East=0, CW
-  hd(h) {
-    this.heading = radians(h);
+
+  /** Set heading of turtle East=0, CW
+   * @param {number} heading - the heading of the turtle
+    */
+  hd(heading) {
+    this.heading = radians(heading);
   }
 }
