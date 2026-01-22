@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 mkdir -p ./lib
 
@@ -36,6 +36,6 @@ echo
 echo "Committing to Github"
 git commit -a -m "make version $version"
 git tag -a v"$version" -m "Version $version"
-git push
+#git push
 echo 
 echo Done.
