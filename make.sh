@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -xe
+
 mkdir -p ./lib
 
 out="./lib/utils.dave.p5.js"
