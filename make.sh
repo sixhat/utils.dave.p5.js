@@ -28,7 +28,8 @@ minify lib/utils.dave.p5.js > lib/utils.dave.p5.min.js
 echo
 echo Generating documentation
 echo "> jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md"
-jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md
+#jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md
+jsdoc src/*.js -d ./doc/ -r Readme.md
 
 echo "$version" > version.txt
 
