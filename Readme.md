@@ -33,3 +33,10 @@ The code has inline code, but you can also check the [documentation online](http
 This is a work in progress and still far from concluded (or fully documented).
 
 In any case if you find it useful and want to contribute please create a pull-request and I'll gladly add new features/corrections to it.
+
+## Requirements
+
+Some of the src files have been written in coffeescript, therefore you'll need
+to install [CoffeeScript](https://coffeescript.org/#introduction) as a
+requirement.
+
