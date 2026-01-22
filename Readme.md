@@ -67,4 +67,15 @@ should do the trick
 brew install tdewolff/tap/minify
 ```
 
+### Js-beautify
+
+[JS-beautify](https://www.npmjs.com/package/js-beautify) is needed, well to
+make code beautiful.
+
+install usually goes like this:
+
+```sh
+npm install -g js-beautify
+```
+
 
