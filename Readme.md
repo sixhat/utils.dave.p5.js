@@ -40,7 +40,31 @@ In any case if you find it useful and want to contribute please create a pull-re
 
 ## Requirements
 
+### CoffeeScript
+
 Some of the src files have been written in coffeescript, therefore you'll need
 to install [CoffeeScript](https://coffeescript.org/#introduction) as a
 requirement.
+
+### JSDoc
+[JSDoc](https://jsdoc.app/) should be installed in your system. Something like 
+
+```sh
+npm install -g jsdoc
+
+or 
+
+brew install jsdoc3
+```
+
+should do the trick
+
+### Minify 
+
+[Minify](https://github.com/tdewolff/minify/tree/master/cmd/minify) is needed to make the JS lib small(ish).
+
+```sh
+brew install tdewolff/tap/minify
+```
+
 
