@@ -3,11 +3,11 @@
 mkdir -p ./lib
 
 out="./lib/utils.dave.p5.js"
-version=`cat version.txt`
-version=$(($version + 1 ))
+version=$(cat version.txt)
+version=$((version + 1 ))
 
-echo Making version $version
-rm $out
+echo Making version "$version"
+rm "$out"
 
 echo
 echo CoffeeScript Conversion
@@ -16,9 +16,9 @@ coffee --no-header -cb src/*.coffee
 
 echo
 echo "Concatenating JS Files"
-echo // utils.dave.p5.js v.$version > $out
+echo // utils.dave.p5.js v."$version" > "$out"
 echo "> cat src/*.js >> $out"
-cat src/*.js >> $out
+cat src/*.js >> "$out"
 
 echo
 echo Minifying 
@@ -30,12 +30,12 @@ echo Generating documentation
 echo "> jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md"
 jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md
 
-echo $version > version.txt
+echo "$version" > version.txt
 
 echo 
 echo "Committing to Github"
 git commit -a -m "make version $version"
-git tag -a v$version -m "Version $version"
+git tag -a v"$version" -m "Version $version"
 git push
 echo 
-echo "Done."
+echo Done.
