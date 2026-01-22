@@ -44,3 +44,4 @@ class LSystem
   ###
   removeRule: (key) ->
     delete @rules[key]
+
