@@ -24,6 +24,10 @@ In your index.html add library JS to your header, AFTER the p5.js library
 
 This makes the classes in utils available to use in your sketch.js
 
+## Examples
+
+* [Hilbert](./examples/hilbert/index.html)
+
 ## Documentation
 
 The code has inline code, but you can also check the [documentation online](https://sixhat.github.io/utils.dave.p5.js/doc/).
