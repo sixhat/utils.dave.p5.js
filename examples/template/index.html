@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p5.js example</title>
+    <style> body {padding: 0; margin: 0; display: flex;} p {position: absolute; bottom:0; background: white; }
+      </style>
+    <script src="https://cdn.jsdelivr.net/npm/p5@latest/lib/p5.min.js"></script>
+    <script src="utils.dave.p5.min.js"></script>
+    <script src="sketch.js"></script>
+  </head>
+  <body>
+      <pre>
+let l_system;
+let turtle;
+
+function setup() {
+    createCanvas(innerWidth, innerHeight);
+    const min_size = min(innerWidth, innerHeight);
+    const num_iter = 7;
+    const fsize = (min_size - 20) / (2 ** num_iter - 1);
+    background(255);
+    l_system = new LSystem(
+        "AB",
+        "A", {
+            'A': '-BF+AFA+FB-',
+            'B': '+AF-BFB-FA+'
+        });
+    l_system.iterate(num_iter);
+    turtle = new Turtle(min_size - 10, min_size - 10);
+    turtle.drawLSystem(l_system, fsize, 90);
+}
+      </pre>
+    <p>code by <a href="https://www.sixhat.net">sixhat.net</a></p>
+  </body>
+</html>
