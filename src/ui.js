@@ -1,3 +1,14 @@
+const MENU_DIR = Object.freeze({
+  VERTICAL: 0,
+  HORIZONTAL: 1,
+});
+
+const BUTTON_SIZE = Object.freeze({
+  HEIGHT: 20,
+  PADDING_X: 10,
+  FONT_SIZE: 10,
+});
+
 class Menu {
   /** Menu
    * @param  {number} x - the topleft-x coordinate of the Menu
@@ -15,9 +26,13 @@ class Menu {
    */
   add(btn) {
     this.btns.push(btn);
+    this.layout();
+  }
+  /** Recalculate the position p for the layout of buttons in the menu */
+  layout() {
     for (let i = 0; i < this.btns.length; i++) {
       let b = this.btns[i];
-      if (this.dir) {
+      if (this.dir === MENU_DIR.VERTICAL) {
         b.p = createVector(this.p.x, this.p.y + 22 * i);
       } else {
         b.p = createVector(this.p.x + i * (b.tw + 20), this.p.y);
@@ -57,9 +72,9 @@ class Button {
   mouseIn() {
     return (
       mouseX > this.p.x &&
-      mouseX < this.p.x + this.tw + 20 &&
+      mouseX < this.p.x + this.tw + BUTTON_SIZE.PADDING_X &&
       mouseY > this.p.y &&
-      mouseY < this.p.y + 20
+      mouseY < this.p.y + BUTTON_SIZE.HEIGHT
     );
   }
   /** On Click executes the function */
@@ -72,7 +87,7 @@ class Button {
   render() {
     push();
     resetMatrix();
-    textSize(10);
+    textSize(BUTTON_SIZE.FONT_SIZE);
     if (this.mouseIn()) {
       fill("#FFF");
       if (mouseIsPressed) {
@@ -81,9 +96,18 @@ class Button {
     } else {
       fill("#AAA3");
     }
-    rect(this.p.x, this.p.y, this.tw + 20, 20);
+    rect(
+      this.p.x,
+      this.p.y,
+      this.tw + 2 * BUTTON_SIZE.PADDING_X,
+      BUTTON_SIZE.HEIGHT,
+    );
     fill(0);
-    text(this.texto, this.p.x + 10, this.p.y + 14);
+    text(
+      this.texto,
+      this.p.x + BUTTON_SIZE.PADDING_X,
+      this.p.y + 2 * BUTTON_SIZE.HEIGHT - 6,
+    );
     pop();
   }
 }

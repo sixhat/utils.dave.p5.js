@@ -26,10 +26,10 @@ This makes the classes in utils available to use in your sketch.js
 
 ### Using a CDN:
 
-if you prefer you can pull the library from a CDN with 
+if you prefer you can pull the library from a CDN with
 
 ```html
-<script src='https://cdn.jsdelivr.net/gh/sixhat/utils.dave.p5.js@master/lib/utils.dave.p5.min.js'></script>
+<script src="https://cdn.jsdelivr.net/gh/sixhat/utils.dave.p5.js@master/lib/utils.dave.p5.min.js"></script>
 ```
 
 ## Examples
