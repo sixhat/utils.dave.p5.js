@@ -1,42 +1,52 @@
 #!/usr/bin/env bash
 
-#set -xe
+yell() { echo "$0: $*" >&2; }
+die() { yell "$*"; exit 111; }
+try() { "$@" || die "cannot $*"; }
 
-mkdir -p ./lib
+do_dirs(){
+    echo "Creating directories lib and build"
+    mkdir -p ./lib
+    mkdir -p ./build
+    mkdir -p ./doc
+}
 
-out="./lib/utils.dave.p5.js"
+do_format_code(){
+    echo "Formating code"
+    npx prettier . --write
+}
+
+do_convert_coffee(){
+    coffee --no-header -o ./build/ -cb src/*.coffee
+    
+}
+
+do_clean(){
+    echo "Remove build and lib" 
+    rm -rf ./build
+    rm -rf ./lib
+    rm -rf ./doc
+}
+
+do_lib(){
+    echo Build Lib
+    try do_dirs
+    cat src/*.js >> ./build/utils.dav.p5.js
+    minify ./build/utils.dav.p5.js > ./lib/utils.dave.p5.min.js
+}
+
+do_docs(){
+    echo Generating documentation
+    jsdoc src/*.js -d ./doc/ -r Readme.md
+}
+
+try do_clean
+try do_convert_coffee
+try do_format_code
+try do_lib
+try do_docs
+
 version=$(cat version.txt)
 version=$((version + 1 ))
-
-echo Making version "$version"
-rm "$out"
-
-echo
-echo CoffeeScript Conversion
-echo "> coffee --no-header -cb src/*.coffee"
-coffee --no-header -cb src/*.coffee
-
-echo
-echo Prettier? Try it out?
-npx prettier . --write
-
-echo
-echo "Concatenating JS Files"
-echo // utils.dave.p5.js v."$version" > "$out"
-echo "> cat src/*.js >> $out"
-cat src/*.js >> "$out"
-
-echo
-echo Minifying 
-echo "> minify lib/utils.dave.p5.js > lib/utils.dave.p5.min.js"
-minify lib/utils.dave.p5.js > lib/utils.dave.p5.min.js
-
-echo
-echo Generating documentation
-echo "> jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md"
-#jsdoc src/*.js -d ./doc/ -t ../minami/ -r Readme.md
-jsdoc src/*.js -d ./doc/ -r Readme.md
-
 echo "$version" > version.txt
-
 echo Done.
