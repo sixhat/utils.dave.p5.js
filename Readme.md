@@ -26,7 +26,9 @@ This makes the classes in utils available to use in your sketch.js
 
 ## Examples
 
-* [Hilbert](./examples/hilbert/index.html)
+* [Hilbert](./examples/hilbert/index.html) illustrates LSystems and Turtle
+  graphics
+* [Trails](./examples/particles-trails/) illustrates using a Menu and a Button
 
 ## Documentation
 
