@@ -34,7 +34,7 @@ do_lib(){
 
 do_docs(){
     echo Generating documentation
-    jsdoc src/*.js -d ./doc/ -r Readme.md
+    jsdoc -c src/jsdoc.conf.json src/*.js -d ./doc/ -r Readme.md
 }
 
 do_bump_version(){
