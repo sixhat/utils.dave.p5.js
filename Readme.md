@@ -18,17 +18,17 @@ Download the latest file `utils.dave.p5.js` or `utils.dave.p5.min.js` from [the 
 In your index.html add library JS to your header, AFTER the p5.js library
 
 ```html
-<script src='p5.min.js'></script>
-<script src='utils.dave.p5.min.js'></script>
+<script src="p5.min.js"></script>
+<script src="utils.dave.p5.min.js"></script>
 ```
 
 This makes the classes in utils available to use in your sketch.js
 
 ## Examples
 
-* [Hilbert](./examples/hilbert/index.html) illustrates LSystems and Turtle
+- [Hilbert](./examples/hilbert/index.html) illustrates LSystems and Turtle
   graphics
-* [Trails](./examples/particles-trails/) illustrates using a Menu and a Button
+- [Trails](./examples/particles-trails/) illustrates using a Menu and a Button
 
 ## Documentation
 
@@ -49,19 +49,20 @@ to install [CoffeeScript](https://coffeescript.org/#introduction) as a
 requirement.
 
 ### JSDoc
-[JSDoc](https://jsdoc.app/) should be installed in your system. Something like 
+
+[JSDoc](https://jsdoc.app/) should be installed in your system. Something like
 
 ```sh
 npm install -g jsdoc
 
-or 
+or
 
 brew install jsdoc3
 ```
 
 should do the trick
 
-### Minify 
+### Minify
 
 [Minify](https://github.com/tdewolff/minify/tree/master/cmd/minify) is needed to make the JS lib small(ish).
 
@@ -79,5 +80,3 @@ install usually goes like this:
 ```sh
 npm install -g js-beautify
 ```
-
-

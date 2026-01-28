@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -xe
+#set -xe
 
 mkdir -p ./lib
 
@@ -17,8 +17,8 @@ echo "> coffee --no-header -cb src/*.coffee"
 coffee --no-header -cb src/*.coffee
 
 echo
-echo JS-Beautify
-js-beautify -r src/*.js
+echo Prettier? Try it out?
+npx prettier . --write
 
 echo
 echo "Concatenating JS Files"
