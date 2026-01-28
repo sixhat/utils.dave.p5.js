@@ -20,14 +20,13 @@ class Oscillator {
   activate() {
     this.active = true;
     this.start_time = Date.now() / 1000;
-    this.t = Date.now() - this.start_time;
+    this.t = 0;
     this.y =
       this.center +
       this.amplitude *
         Math.sin(2 * Math.PI * this.t * this.frequency + this.phase);
-    this.x = this.t;
-    this.px = this.x;
-    this.pt = this.x;
+    this.px = this.t;
+    this.pt = this.t;
     this.py = this.y;
   }
 
@@ -56,7 +55,6 @@ class Oscillator {
         this.center +
         this.amplitude *
           Math.sin(2 * Math.PI * this.t * this.frequency + this.phase);
-      this.x = this.t;
     }
     return this.y;
   }

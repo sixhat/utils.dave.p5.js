@@ -17,7 +17,6 @@ do_format_code(){
     npx prettier ./examples/ -write
 }
 
-
 do_clean(){
     echo "Remove build and lib" 
     rm -rf ./build

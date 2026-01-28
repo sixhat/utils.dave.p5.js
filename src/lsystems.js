@@ -18,7 +18,7 @@ LSystem = class LSystem {
 
   /** Processes the Current String according to the rules in the LSystem
    * @param {string} oldStr the string to be processed
-   * @return {string} the processede string
+   * @return {string} the processed string
    */
   processString(oldStr) {
     var c, i, len, newStr;
@@ -33,17 +33,13 @@ LSystem = class LSystem {
   /**
    * Iterates the LSystems
    * @param {number} nIters - Number of interations to compute
+   * @return {string} The iterated resulting string.
    */
   iterate(nIters) {
-    var i, n, ref;
     if (nIters < 1) {
-      return this.endStrig;
+      return this.endString;
     }
-    for (
-      n = i = 1, ref = nIters;
-      1 <= ref ? i <= ref : i >= ref;
-      n = 1 <= ref ? ++i : --i
-    ) {
+    for (let i = 0; i < nIters; i++) {
       this.endString = this.processString(this.startString);
       this.startString = this.endString;
     }

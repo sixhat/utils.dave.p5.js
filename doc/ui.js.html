@@ -61,9 +61,12 @@ class Menu {
     for (let i = 0; i &lt; this.btns.length; i++) {
       let b = this.btns[i];
       if (this.dir === MENU_DIR.VERTICAL) {
-        b.p = createVector(this.p.x, this.p.y + 22 * i);
+        b.p = createVector(this.p.x, this.p.y + (BUTTON_SIZE.HEIGHT + 2) * i);
       } else {
-        b.p = createVector(this.p.x + i * (b.tw + 20), this.p.y);
+        b.p = createVector(
+          this.p.x + i * (b.tw + BUTTON_SIZE.PADDING_X),
+          this.p.y,
+        );
       }
     }
   }

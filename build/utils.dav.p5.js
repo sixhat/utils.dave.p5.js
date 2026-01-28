@@ -206,7 +206,7 @@ LSystem = class LSystem {
 
   /** Processes the Current String according to the rules in the LSystem
    * @param {string} oldStr the string to be processed
-   * @return {string} the processede string
+   * @return {string} the processed string
    */
   processString(oldStr) {
     var c, i, len, newStr;
@@ -221,17 +221,13 @@ LSystem = class LSystem {
   /**
    * Iterates the LSystems
    * @param {number} nIters - Number of interations to compute
+   * @return {string} The iterated resulting string.
    */
   iterate(nIters) {
-    var i, n, ref;
     if (nIters < 1) {
-      return this.endStrig;
+      return this.endString;
     }
-    for (
-      n = i = 1, ref = nIters;
-      1 <= ref ? i <= ref : i >= ref;
-      n = 1 <= ref ? ++i : --i
-    ) {
+    for (let i = 0; i < nIters; i++) {
       this.endString = this.processString(this.startString);
       this.startString = this.endString;
     }
@@ -276,14 +272,13 @@ class Oscillator {
   activate() {
     this.active = true;
     this.start_time = Date.now() / 1000;
-    this.t = Date.now() - this.start_time;
+    this.t = 0;
     this.y =
       this.center +
       this.amplitude *
         Math.sin(2 * Math.PI * this.t * this.frequency + this.phase);
-    this.x = this.t;
-    this.px = this.x;
-    this.pt = this.x;
+    this.px = this.t;
+    this.pt = this.t;
     this.py = this.y;
   }
 
@@ -312,7 +307,6 @@ class Oscillator {
         this.center +
         this.amplitude *
           Math.sin(2 * Math.PI * this.t * this.frequency + this.phase);
-      this.x = this.t;
     }
     return this.y;
   }
@@ -553,9 +547,12 @@ class Menu {
     for (let i = 0; i < this.btns.length; i++) {
       let b = this.btns[i];
       if (this.dir === MENU_DIR.VERTICAL) {
-        b.p = createVector(this.p.x, this.p.y + 22 * i);
+        b.p = createVector(this.p.x, this.p.y + (BUTTON_SIZE.HEIGHT + 2) * i);
       } else {
-        b.p = createVector(this.p.x + i * (b.tw + 20), this.p.y);
+        b.p = createVector(
+          this.p.x + i * (b.tw + BUTTON_SIZE.PADDING_X),
+          this.p.y,
+        );
       }
     }
   }
