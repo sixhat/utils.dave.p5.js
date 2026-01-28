@@ -13,13 +13,10 @@ do_dirs(){
 
 do_format_code(){
     echo "Formating code"
-    npx prettier . --write
+    npx prettier ./src/ --write
+    npx prettier ./examples/ -write
 }
 
-do_convert_coffee(){
-    coffee --no-header -o ./build/ -cb src/*.coffee
-    
-}
 
 do_clean(){
     echo "Remove build and lib" 
@@ -41,7 +38,6 @@ do_docs(){
 }
 
 try do_clean
-try do_convert_coffee
 try do_format_code
 try do_lib
 try do_docs
@@ -49,4 +45,4 @@ try do_docs
 version=$(cat version.txt)
 version=$((version + 1 ))
 echo "$version" > version.txt
-echo Done.
+echo Done version "$version".

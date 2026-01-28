@@ -50,12 +50,6 @@ In any case if you find it useful and want to contribute please create a pull-re
 
 ## Requirements
 
-### CoffeeScript
-
-Some of the src files have been written in coffeescript, therefore you'll need
-to install [CoffeeScript](https://coffeescript.org/#introduction) as a
-requirement.
-
 ### JSDoc
 
 [JSDoc](https://jsdoc.app/) should be installed in your system. Something like
@@ -78,13 +72,12 @@ should do the trick
 brew install tdewolff/tap/minify
 ```
 
-### Js-beautify
+### Prettier
 
-[JS-beautify](https://www.npmjs.com/package/js-beautify) is needed, well to
-make code beautiful.
+[Prettier](https://prettier.io/) for making both html and js ... well, that.
 
-install usually goes like this:
-
-```sh
-npm install -g js-beautify
 ```
+npm intall -g prettier
+```
+
+should do the trik.
