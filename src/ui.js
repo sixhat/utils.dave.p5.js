@@ -28,6 +28,7 @@ class Menu {
     this.btns.push(btn);
     this.layout();
   }
+
   /** Recalculate the position p for the layout of buttons in the menu */
   layout() {
     for (let i = 0; i < this.btns.length; i++) {
@@ -49,6 +50,7 @@ class Menu {
       b.click();
     }
   }
+  
   /** Draw the menu by calling render on all buttons */
   render() {
     for (let b of this.btns) {
@@ -71,6 +73,7 @@ class Button {
     textSize(10);
     this.tw = textWidth(this.texto);
   }
+
   /** Checks if mouse is inside the button */
   mouseIn() {
     return (
@@ -80,12 +83,14 @@ class Button {
       mouseY < this.p.y + BUTTON_SIZE.HEIGHT
     );
   }
+
   /** On Click executes the function */
   click() {
     if (this.mouseIn()) {
       this.a(mouseX);
     }
   }
+    
   /** draws the Button */
   render() {
     push();

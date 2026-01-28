@@ -13,7 +13,9 @@ class Grid {
     this.gutter = gutter;
     this.largura = largura;
     this.altura = altura;
+    this.compute();
   }
+
   compute() {
     this.areaw =
       (this.largura - 2 * this.margem - (this.colunas - 1) * this.gutter) /
@@ -36,16 +38,17 @@ class Grid {
       }
     }
   }
-  render(encher = false) {
+
+  render(encher = false, cor="pink", font_size=10) {
     push();
     resetMatrix();
-    stroke("pink");
+    stroke(cor);
     if (encher) {
       fill(encher);
     } else {
       noFill();
     }
-    textSize(10);
+    textSize(font_size);
     for (let linha = 0; linha < this.linhas; linha++) {
       for (let coluna = 0; coluna < this.colunas; coluna++) {
         const box = this.areas[linha][coluna];
@@ -55,6 +58,7 @@ class Grid {
     }
     pop();
   }
+
   area(inicio = 0, fim = 0) {
     if (fim < inicio) {
       const aux = fim;
@@ -63,7 +67,7 @@ class Grid {
     }
     if (fim >= this.linhas * this.colunas) {
       console.log("ERRO: área FIM fora da grelha");
-      return;
+        throw new Error("Grid index out of bounds");
     }
 
     const ilin = Math.floor(inicio / this.colunas);
@@ -88,11 +92,11 @@ class Grid {
 
 //  Simple Manual Guides to place over drawings
 class Guides {
-  constructor() {
+  constructor(cor="#FF00FFAA") {
     this.horizontal = [];
     this.vertical = [];
     this.rectangles = [];
-    this.color = color("#FF00FFAA");
+    this.color = color(cor);
   }
   show() {
     push();
@@ -109,7 +113,6 @@ class Guides {
     this.clearHorizontal();
     this.clearVertical();
     this.clearRectangles();
-    this.color = color("#FF00FFAA");
   }
   clearHorizontal() {
     this.horizontal = [];
