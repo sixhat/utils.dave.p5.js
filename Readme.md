@@ -24,6 +24,14 @@ In your index.html add library JS to your header, AFTER the p5.js library
 
 This makes the classes in utils available to use in your sketch.js
 
+### Using a CDN:
+
+if you prefer you can pull the library from a CDN with 
+
+```html
+<script src='https://cdn.jsdelivr.net/gh/sixhat/utils.dave.p5.js@master/lib/utils.dave.p5.min.js'></script>
+```
+
 ## Examples
 
 - [Hilbert](./examples/hilbert/index.html) illustrates LSystems and Turtle
