@@ -37,12 +37,16 @@ do_docs(){
     jsdoc src/*.js -d ./doc/ -r Readme.md
 }
 
+do_bump_version(){
+    local version
+    read -r version < version.txt
+    version=$((version + 1 ))
+    echo "$version" > version.txt
+    echo Done version "$version".
+}
+
 try do_clean
 try do_format_code
 try do_lib
 try do_docs
-
-version=$(cat version.txt)
-version=$((version + 1 ))
-echo "$version" > version.txt
-echo Done version "$version".
+try do_bump_version
