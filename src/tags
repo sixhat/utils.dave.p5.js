@@ -1,0 +1,60 @@
+@rules	lsystems.coffee	40
+Button	ui.js	43
+ContextFreeGrammar	context-free-grammar.ts	1
+Dave	color.js	1
+Grid	grid.js	1
+Guides	grid.js	73
+LSystem	lsystems.js	1
+LSystem	lsystems.js	3
+Menu	ui.js	1
+Oscillator	oscillator.js	7
+Turtle	turtle.js	1
+activate	oscillator.js	/^    activate() {$/
+activate	tags	/^activate	oscillator.js	\/^    activate() {$\/$/
+add	tags	/^add	ui.js	\/^      add(btn) {$\/$/
+add	ui.js	/^      add(btn) {$/
+area	grid.js	/^    area(inicio = 0, fim = 0) {$/
+backward	turtle.js	/^    backward(steps) {$/
+clear	grid.js	/^    clear() {$/
+clearHorizontal	grid.js	/^    clearHorizontal() {$/
+clearRectangles	grid.js	/^    clearRectangles() {$/
+clearVertical	grid.js	/^    clearVertical() {$/
+click	ui.js	/^      click() {$/
+click	ui.js	/^      click() {$/
+color	turtle.js	/^    color(c) {$/
+compute	grid.js	/^    compute() {$/
+constructor	color.js	/^    constructor() {$/
+constructor	grid.js	/^    constructor(linhas = 1, colunas = 1, margem = /
+constructor	grid.js	/^    constructor() {$/
+constructor	oscillator.js	/^    constructor(p = 1, a = 1, b = 2, phase = 0) {$/
+constructor	turtle.js	/^    constructor(x = 0, y = 0, heading = -HALF_PI) /
+constructor	ui.js	/^      constructor(x, y, dir = 0) {$/
+constructor	ui.js	/^      constructor(x = 0, y = 0, action, texto) {$/
+drawLSystem	turtle.js	/^    drawLSystem(ls, step, angle) {$/
+drawString	turtle.js	/^    drawString(string, step, angle) {$/
+fillHsluv	color.js	/^    fillHsluv(h, s, l) {$/
+forward	turtle.js	/^    forward(steps) {$/
+go	oscillator.js	/^    go() {$/
+hd	turtle.js	/^    hd(heading) {$/
+hide	turtle.js	/^    hide() {$/
+left	turtle.js	/^    left(rot) {$/
+mouseIn	ui.js	/^      mouseIn() {$/
+newStr	lsystems.coffee	18
+paleta	color.js	42
+pause	oscillator.js	/^    pause() {$/
+pen_down	turtle.js	/^    pen_down() {$/
+pen_up	turtle.js	/^    pen_up() {$/
+pget	color.js	/^    pget(x, y, img) {$/
+pop	turtle.js	/^    pop() {$/
+pos	turtle.js	/^    pos(x, y) {$/
+push	turtle.js	/^    push() {$/
+render	grid.js	/^    render(encher = false) {$/
+render	ui.js	/^      render() {$/
+render	ui.js	/^      render() {$/
+right	turtle.js	/^    right(rot) {$/
+show	grid.js	/^    show() {$/
+show	turtle.js	/^    show() {$/
+startString	lsystems.coffee	9
+strokeHsluv	color.js	/^    strokeHsluv(h, s, l) {$/
+style	turtle.js	/^    style(weight) {$/
+unPause	oscillator.js	/^    unPause() {$/
