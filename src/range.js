@@ -1,1 +1,1 @@
-const range = (n) => [...Array(n).keys()];
+const range = (n) => [...Array(n).keys()]

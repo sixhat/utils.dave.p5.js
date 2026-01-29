@@ -13,8 +13,9 @@ do_dirs(){
 
 do_format_code(){
     echo "Formating code"
-    npx prettier ./src/ --write
-    npx prettier ./examples/ -write
+    local options="--no-semi --tab-width=4 --use-tabs"
+    npx prettier $options ./src/ --write
+    npx prettier $options ./examples/ -write
 }
 
 do_clean(){

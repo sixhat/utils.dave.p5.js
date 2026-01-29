@@ -1,121 +1,124 @@
 const MENU_DIR = Object.freeze({
-  VERTICAL: 0,
-  HORIZONTAL: 1,
-});
+	VERTICAL: 0,
+	HORIZONTAL: 1,
+})
 
 const BUTTON_SIZE = Object.freeze({
-  HEIGHT: 20,
-  PADDING_X: 10,
-  FONT_SIZE: 10,
-});
+	HEIGHT: 20,
+	PADDING_X: 10,
+	FONT_SIZE: 10,
+})
 
 class Menu {
-  /** Menu
-   * @param  {number} x - the topleft-x coordinate of the Menu
-   * @param  {number} y - the topleft-y coordinate of the Menu
-   * @param  {number} dir=0 - The direction of the menu (0: vertical, 1: horizontal)
-   */
-  constructor(x, y, dir = 0) {
-    this.p = createVector(x, y);
-    this.btns = [];
-    this.dir = dir;
-  }
+	/** Menu
+	 * @param  {number} x - the topleft-x coordinate of the Menu
+	 * @param  {number} y - the topleft-y coordinate of the Menu
+	 * @param  {number} dir=0 - The direction of the menu (0: vertical, 1: horizontal)
+	 */
+	constructor(x, y, dir = 0) {
+		this.p = createVector(x, y)
+		this.btns = []
+		this.dir = dir
+	}
 
-  /** Add a Button to the menu
-   * @param  {Button} btn - the button to add to the menu
-   */
-  add(btn) {
-    this.btns.push(btn);
-    this.layout();
-  }
+	/** Add a Button to the menu
+	 * @param  {Button} btn - the button to add to the menu
+	 */
+	add(btn) {
+		this.btns.push(btn)
+		this.layout()
+	}
 
-  /** Recalculate the position p for the layout of buttons in the menu */
-  layout() {
-    for (let i = 0; i < this.btns.length; i++) {
-      let b = this.btns[i];
-      if (this.dir === MENU_DIR.VERTICAL) {
-        b.p = createVector(this.p.x, this.p.y + (BUTTON_SIZE.HEIGHT + 2) * i);
-      } else {
-        b.p = createVector(
-          this.p.x + i * (b.tw + BUTTON_SIZE.PADDING_X),
-          this.p.y,
-        );
-      }
-    }
-  }
+	/** Recalculate the position p for the layout of buttons in the menu */
+	layout() {
+		for (let i = 0; i < this.btns.length; i++) {
+			let b = this.btns[i]
+			if (this.dir === MENU_DIR.VERTICAL) {
+				b.p = createVector(
+					this.p.x,
+					this.p.y + (BUTTON_SIZE.HEIGHT + 2) * i,
+				)
+			} else {
+				b.p = createVector(
+					this.p.x + i * (b.tw + BUTTON_SIZE.PADDING_X),
+					this.p.y,
+				)
+			}
+		}
+	}
 
-  /** Passes the click event to all buttons for processing */
-  click() {
-    for (let b of this.btns) {
-      b.click();
-    }
-  }
-  
-  /** Draw the menu by calling render on all buttons */
-  render() {
-    for (let b of this.btns) {
-      b.render();
-    }
-  }
+	/** Passes the click event to all buttons for processing */
+	click() {
+		for (let b of this.btns) {
+			b.click()
+		}
+	}
+
+	/** Draw the menu by calling render on all buttons */
+	render() {
+		for (let b of this.btns) {
+			b.render()
+		}
+	}
 }
 
 class Button {
-  /** A Button
-   * @param  {number} x=0 - The X coordinate of the button
-   * @param  {number} y=0 - The Y Coordinate of the button
-   * @param  {function} action - the action to perform
-   * @param  {stringk} texto - Text to display
-   */
-  constructor(x = 0, y = 0, action, texto) {
-    this.p = createVector(x, y);
-    this.a = action;
-    this.texto = texto;
-    textSize(10);
-    this.tw = textWidth(this.texto);
-  }
+	/** A Button
+	 * @param  {number} x=0 - The X coordinate of the button
+	 * @param  {number} y=0 - The Y Coordinate of the button
+	 * @param  {function} action - the action to perform
+	 * @param  {stringk} texto - Text to display
+	 */
+	constructor(x = 0, y = 0, action, texto) {
+		this.p = createVector(x, y)
+		this.a = action
+		this.texto = texto
+		textSize(10)
+		this.tw = textWidth(this.texto)
+	}
 
-  /** Checks if mouse is inside the button */
-  mouseIn() {
-    return (
-      mouseX > this.p.x &&
-      mouseX < this.p.x + this.tw + BUTTON_SIZE.PADDING_X &&
-      mouseY > this.p.y &&
-      mouseY < this.p.y + BUTTON_SIZE.HEIGHT
-    );
-  }
+	/** Checks if mouse is inside the button */
+	mouseIn() {
+		return (
+			mouseX > this.p.x &&
+			mouseX < this.p.x + this.tw + BUTTON_SIZE.PADDING_X &&
+			mouseY > this.p.y &&
+			mouseY < this.p.y + BUTTON_SIZE.HEIGHT
+		)
+	}
 
-  /** On Click executes the function */
-  click() {
-    if (this.mouseIn()) {
-      this.a(mouseX);
-    }
-  }
-    
-  /** draws the Button */
-  render() {
-    push();
-    resetMatrix();
-    textSize(BUTTON_SIZE.FONT_SIZE);
-    if (this.mouseIn()) {
-      fill("#FFF");
-      if (mouseIsPressed) {
-        fill("#AAA");
-      }
-    } else {
-      fill("#AAA3");
-    }
-    rect(
-      this.p.x,
-      this.p.y,
-      this.tw + 2 * BUTTON_SIZE.PADDING_X,
-      BUTTON_SIZE.HEIGHT,
-    );
-    fill(0);
-    text(
-      this.texto,
-      this.p.x + BUTTON_SIZE.PADDING_X,
-      this.p.y + 2 * BUTTON_SIZE.HEIGHT - 6,
-    );
-    pop();
-  }
+	/** On Click executes the function */
+	click() {
+		if (this.mouseIn()) {
+			this.a(mouseX)
+		}
+	}
+
+	/** draws the Button */
+	render() {
+		push()
+		resetMatrix()
+		textSize(BUTTON_SIZE.FONT_SIZE)
+		if (this.mouseIn()) {
+			fill("#FFF")
+			if (mouseIsPressed) {
+				fill("#AAA")
+			}
+		} else {
+			fill("#AAA3")
+		}
+		rect(
+			this.p.x,
+			this.p.y,
+			this.tw + 2 * BUTTON_SIZE.PADDING_X,
+			BUTTON_SIZE.HEIGHT,
+		)
+		fill(0)
+		text(
+			this.texto,
+			this.p.x + BUTTON_SIZE.PADDING_X,
+			this.p.y + 2 * BUTTON_SIZE.HEIGHT - 6,
+		)
+		pop()
+	}
 }
